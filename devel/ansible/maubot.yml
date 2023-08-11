@@ -1,0 +1,6 @@
+---
+- hosts: maubot
+  become: true
+  become_method: sudo
+  roles:
+    - maubot
