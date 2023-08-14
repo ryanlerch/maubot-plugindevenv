@@ -90,3 +90,18 @@
   become_user: vagrant
   args:
     chdir: /home/vagrant/maubot/plugins/maubot-fedora
+
+
+- name: get maubot-meetings
+  git:
+    repo: https://github.com/GregSutcliffe/maubot-meetings.git
+    dest: /home/vagrant/maubot/plugins/maubot-meetings
+  become: True
+  become_user: vagrant
+
+- name: build and install the meetings plugin to maubot
+  command: mbc build -u
+  become: True
+  become_user: vagrant
+  args:
+    chdir: /home/vagrant/maubot/plugins/maubot-meetings
