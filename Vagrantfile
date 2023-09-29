@@ -7,9 +7,9 @@ Vagrant.configure(2) do |config|
   config.hostmanager.manage_guest = true
 
   config.vm.define "maubot" do |maubot|
-    maubot.vm.box_url = "https://download.fedoraproject.org/pub/fedora/linux/releases/34/Cloud/x86_64/images/Fedora-Cloud-Base-Vagrant-34-1.2.x86_64.vagrant-libvirt.box"
-    maubot.vm.box = "f34-cloud-libvirt"
-    maubot.vm.hostname = "maubot.test"
+    maubot.vm.box_url = "https://download.fedoraproject.org/pub/fedora/linux/releases/38/Cloud/x86_64/images/Fedora-Cloud-Base-Vagrant-38-1.6.x86_64.vagrant-libvirt.box"
+    maubot.vm.box = "f38-cloud-libvirt"
+    maubot.vm.hostname = "maubot.tinystage.test"
 
     maubot.vm.synced_folder ".", "/home/vagrant/maubot", type: "sshfs"
 

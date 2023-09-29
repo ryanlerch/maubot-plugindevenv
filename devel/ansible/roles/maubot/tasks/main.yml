@@ -8,7 +8,10 @@
      name:
      - krb5-workstation
      - fasjson-client
+     - vim
      - git
+     - python3-pip
+     - sqlite
      state: present
 
 
@@ -36,7 +39,7 @@
 
 
 - name: copy maubot config
-  copy:
+  template:
     src: config.yaml
     dest: /var/lib/maubot
     mode: 0644
@@ -45,7 +48,7 @@
 
 - name: Install the .bashrc
   copy:
-    src: .bashrc
+    src: bashrc
     dest: /home/vagrant/.bashrc
     mode: 0644
     owner: vagrant
@@ -72,7 +75,9 @@
   delay: 5
 
 - name: log into the maubot instance with mbc login
-  command: mbc login --username admin --password mypassword --server http://maubot.test:29316 --alias maubot
+  command: mbc login --username admin --password mypassword --server http://{{ ansible_fqdn }}:29316 --alias maubot
+  args:
+    creates: /home/vagrant/.config/maubot-cli.json
   become: True
   become_user: vagrant
 
