@@ -54,7 +54,7 @@ server:
     hostname: 0.0.0.0
     port: 29316
     # Public base URL where the server is visible.
-    public_url: http://maubot.test:29316
+    public_url: http://{{ ansible_fqdn }}:29316
     # The base path for the UI.
     ui_base_path: /_matrix/maubot
     # The base path for plugin endpoints. The instance ID will be appended directly.
@@ -71,13 +71,13 @@ server:
 # clients in the management UI, since you can also just type the homeserver URL
 # into the box there.
 homeservers:
-    # matrix.org:
-        # Client-server API URL
-        # url: https://matrix-client.matrix.org
-        # registration_shared_secret from synapse config
-        # You can leave this empty if you don't have access to the homeserver.
-        # When this is empty, `mbc auth --register` won't work, but `mbc auth` (login) will.
-        # secret: null
+    matrix.org:
+      # Client-server API URL
+      url: https://matrix-client.matrix.org
+      # registration_shared_secret from synapse config
+      # You can leave this empty if you don't have access to the homeserver.
+      # When this is empty, `mbc auth --register` won't work, but `mbc auth` (login) will.
+      secret: null
     fedora.im:
         # Client-server API URL
         url: https://fedora.ems.host
